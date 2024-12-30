@@ -1,8 +1,9 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
+use crate::Route;
 
 #[component]
 pub fn AdminLayout(children: Element) -> Element {
+    println!("Rendering AdminLayout with children");
     rsx! {
         div { class: "min-h-screen bg-gray-100",
             // 侧边栏
@@ -25,7 +26,7 @@ pub fn AdminLayout(children: Element) -> Element {
             }
             // 主内容区
             div { class: "ml-64 p-8",
-                {children}
+              Outlet::<Route> {}
             }
         }
     }
