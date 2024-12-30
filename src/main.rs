@@ -16,6 +16,7 @@ enum Route {
     #[layout(AdminLayout)]
     #[route("/admin/dashboard")]
     Dashboard,
+
     #[route("/admin/users")]
     Users,
 
@@ -40,7 +41,7 @@ fn Home() -> Element {
             div { class: "space-x-4",
                 Link { 
                     to: "/admin/dashboard",
-                    class: "px-6 py-2 bg-blue-500 text-blue rounded-lg hover:bg-blue-600",
+                    class: "px-6 py-2 bg-blue-500 text-blue-500 rounded-lg hover:bg-blue-600",
                     "进入管理后台" 
                 }
             }
