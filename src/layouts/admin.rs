@@ -3,30 +3,33 @@ use crate::Route;
 
 #[component]
 pub fn AdminLayout(children: Element) -> Element {
-    println!("Rendering AdminLayout with children");
     rsx! {
-        div { class: "min-h-screen bg-gray-100",
-            // 侧边栏
-            div { class: "fixed left-0 top-0 w-64 h-full bg-white shadow-lg",
-                div { class: "p-4 border-b",
-                    h2 { class: "text-xl font-bold", "管理后台" }
-                }
-                nav { class: "p-4",
-                    Link { 
-                        to: "/admin/dashboard", 
-                        class: "block py-2 px-4 hover:bg-gray-100 rounded",
-                        "仪表盘" 
-                    }
-                    Link { 
-                        to: "/admin/users", 
-                        class: "block py-2 px-4 hover:bg-gray-100 rounded",
-                        "用户管理" 
-                    }
-                }
+        div { class: "min-h-screen flex flex-col",
+            // 头部栏
+            header { class: "w-full bg-blue-500 text-white p-4 shadow",
+                h1 { class: "text-xl font-bold", "管理后台" }
             }
             // 主内容区
-            div { class: "ml-64 p-8",
-              Outlet::<Route> {}
+            div { class: "flex flex-1",
+                // 侧边栏
+                nav { class: "w-64 bg-white shadow-lg flex-shrink-0",
+                    div { class: "p-4",
+                        Link { 
+                            to: "/admin/dashboard", 
+                            class: "block py-2 px-4 hover:bg-gray-100 rounded",
+                            "仪表盘" 
+                        }
+                        Link { 
+                            to: "/admin/users", 
+                            class: "block py-2 px-4 hover:bg-gray-100 rounded",
+                            "用户管理" 
+                        }
+                    }
+                }
+                // 内容区
+                main { class: "flex-1 p-8 overflow-auto",
+                    Outlet::<Route> {}
+                }
             }
         }
     }
